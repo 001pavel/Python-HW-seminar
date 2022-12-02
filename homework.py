@@ -72,6 +72,6 @@ ax = int(input('Введите первую координату точки А (
 ay = int(input('Введите вторую координату точки А (Y): '))
 bx = int(input('Введите первую координату точки B (X): '))
 by = int(input('Введите вторую координату точки B (Y): '))
-# distance_between_a_b = ((ax - bx)**2 + (ay - by)**2)**0.5
-distance_between_a_b = math.sqrt(math.pow(ax - bx, 2) + math.pow(ay - by, 2))
+distance_between_a_b = ((ax - bx)**2 + (ay - by)**2)**0.5
+# distance_between_a_b = math.sqrt(math.pow(ax - bx, 2) + math.pow(ay - by, 2))
 print(f"Расстояние между точками А и В равно {round(distance_between_a_b, 2)}")
