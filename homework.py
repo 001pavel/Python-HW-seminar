@@ -1,91 +1,140 @@
 import math
 import random
 
-# Домашнее задание по второму семинару
+# Домашнее задание по третьему семинару
 
-# 1. ДЗ	Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
+# 1. ДЗ	Задайте список из нескольких чисел. Напишите программу, которая найдёт сумму элементов списка, стоящих на нечётной позиции.
 # Пример:
-# 	6782 -> 23
-# 	0.56 -> 11
+# o	[2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
+# import random
+# sp1 = [2, 3, 5, 9, 3]
+# sp3 = list(range(5))
 
-# 1 решение задачи
-# n = input('Enter number N: ').split('.')
-# if len(n) > 1:
-#     n = n[0]+n[1]
-# else:
-#     n = n[0]
-# l = len(n)
-# sum = 0
-# for i in range(l):
-#     sum += int(n[i])
-# print(sum)
 
-# 2 решение задачи
-# n = input('Enter number N: ')
-# sum = 0
-# for i in range(len(n)):
-#     if n[i] != ".":
-#         sum += int(n[i])
-# print(sum)
+# def random_sp(n):
+#     sp = []
+#     for i in range(n):
+#         sp.append(random.randrange(1, n))
+#     return sp
 
-# 3 решение задачи
-# n = input('Enter number N: ')
-# sum = 0
-# for i in range(len(n)):
-#     if n[i].isdigit():
-#         sum += int(n[i])
-# print(sum)
 
-# 2. ДЗ	Напишите программу, которая принимает на вход число N и выдает набор произведений чисел от 1 до N.
+# def sum_odd_position(sp):
+#     count = 0
+#     for i in range(len(sp)):
+#         if i % 2 != 0:
+#             count += sp[i]
+#     print(count)
+
+
+# sp2 = random_sp(5)
+# print(sp2)
+# sum_odd_position(sp2)
+
+# 2.	Напишите программу, которая найдёт произведение пар чисел списка. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
 # Пример:
-# 	пусть N = 4, тогда [ 1, 2, 6, 24 ] (1, 12, 123, 1234)
+# o	[2, 3, 4, 5, 6] => [12, 15, 16];
+# o	[2, 3, 5, 6] => [12, 15]
+# sp1 = [2, 3, 4, 5, 6]
+# sp3 = [2, 3, 5, 6]
 
-# n = int(input('Enter number N: '))
-# mult = 1  # результат произведения чисел
-# list = []
-# for i in range(1, n+1):
-#     list.append(mult)
-#     mult *= i + 1
-# print(list)
 
-# 3 ДЗ Задайте список из n чисел последовательности (1+1/n)^n выведите на экран их сумму.
+# def random_sp(n):
+#     sp = []
+#     for i in range(n):
+#         sp.append(random.randrange(1, n + 1))
+#     return sp
 
-# list = []
-# summ = 0
-# n = int(input('Enter number N: '))
-# for i in range(1, n+1):
-#     list.append(round((1+1/i)**i, 2))
-#     summ += (1+1/i)**i
-# print(
-#     f"Cписок из {n} чисел последовательности (1+1/n)^n: {list}, сумма всех чисел списка равна {round(summ, 2)}")
 
-# 4. ДЗ	Задайте числами список из N элементов, заполненных из промежутка [-N, N]. Найдите произведение элементов на указанных позициях. Позиции хранятся в файле file.txt в одной строке одно число.
+# def mult_sp(sp):
+#     mult = 1
+#     for i in range(len(sp)//2):
+#         mult = sp[i] * sp[-1-i]
+#         print(mult, end=' ')
+#     if len(sp) % 2 != 0:
+#         print(sp[(len(sp) // 2)]**2, end=' ')
 
-lst = []
-# n = int(input('Enter number N: '))
-n = 6
-for i in range(-n, n+1):
-    lst.append(i)
-print(f"задаём список от -{n} до {n}: {lst}")
 
-with open("file.txt") as file:
-    array = [int(row.strip()) for row in file]
-print(f"считываем позиции из файла: {array}")
+# sp2 = random_sp(5)
+# print(sp2)
+# mult_sp(sp2)
 
-mult = 1
-for i in array:
-    if lst[i] != 0:
-        mult *= lst[i]
-print(f"Получаем произведение элементов на указанных позициях: {mult}")
+# 3.	Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу между максимальным и минимальным значением дробной части элементов.
+# Пример:
+# o	[1.1, 1.2, 3.1, 5, 10.01] => 0.19
+# sp1 = [1.1, 1.2, 3.1, 5, 10.01]
+# sp3 = [0.03, 1.17, 9.62, 7.2, 4.86]
 
-# 5. ДЗ	Реализуйте алгоритм перемешивания списка (shuffle использовать нельзя, другие методы из библиотеки random - можно).
 
-# original_list = list(range(1, 11))
-# mixed_list = []
-# print(original_list)
-# length = len(original_list)
-# for i in range(length):
-#     n = random.choice(original_list)
-#     mixed_list.append(n)
-#     original_list.remove(n)
-# print(mixed_list)
+# def random_sp(n):
+#     sp = []
+#     for i in range(n):
+#         sp.append(round(random.random()*10, 2))
+#     return sp
+
+
+# def find_dif(sp):
+#     max_num = sp[0] % 1
+#     min_num = sp[0] % 1
+#     for i in range(len(sp)):
+#         after_dot = sp[i] % 1
+#         # print(f"after dot: {after_dot}")
+#         if max_num < after_dot:
+#             max_num = after_dot
+#             # print(f"max: {max_num}")
+#         if min_num > after_dot:
+#             min_num = after_dot
+#             # print(f"min: {min_num}")
+#     print(round(max_num - min_num, 2))
+
+
+# sp2 = random_sp(5)
+# print(sp2)
+# find_dif(sp2)
+
+# 4.	Напишите программу, которая будет преобразовывать десятичное число в двоичное (встроенными методами пользоваться нельзя).
+# Пример:
+# o	45 -> 101101
+# o	3 -> 11
+# o	2 -> 10
+
+# def conv_to_binary(n):
+#     sp = []
+#     while n > 0:
+#         sp.append(n % 2)
+#         n //= 2
+#     for i in range(len(sp)):
+#         print(sp[-1-i], end=' ')
+
+
+# conv_to_binary(int(input('Enter number: ')))
+
+# 5.	Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
+# Пример:
+# o	для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
+
+def fib(n):
+    if n in [1, 2]:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+def nfib(n):
+    if n == 1:
+        return 1
+    elif n == 0:
+        return 0
+    else:
+        return nfib(n+2) - nfib(n+1)
+
+
+k = 8
+sp = []
+
+for i in range(-k, k + 1):
+    if i < 2:
+        sp.append(nfib(i))
+    else:
+        sp.append(fib(i))
+
+print(sp)
